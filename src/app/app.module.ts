@@ -19,6 +19,7 @@ import { NotFoundComponent } from './not-found/not-found.component';
 import { HomeComponent } from './home/home.component';
 import { BruteNotFoundComponent } from './brute-not-found/brute-not-found.component';
 import { HallComponent } from './hall/hall.component';
+import { DojoComponent } from './dojo/dojo.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { HallComponent } from './hall/hall.component';
     NotFoundComponent,
     HomeComponent,
     BruteNotFoundComponent,
-    HallComponent
+    HallComponent,
+    DojoComponent
   ],
   imports: [
     BrowserModule,

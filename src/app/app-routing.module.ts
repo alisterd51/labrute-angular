@@ -15,6 +15,7 @@ import { TournamentComponent } from './tournament/tournament.component';
 import { RankingComponent } from './ranking/ranking.component';
 import { DestinyComponent } from './destiny/destiny.component';
 import { TournamentHistoryComponent } from './tournament-history/tournament-history.component';
+import { DojoComponent } from './dojo/dojo.component';
 
 const routes: Routes = [
   {
@@ -87,6 +88,10 @@ const routes: Routes = [
       {
         path: 'achievements',
         component: AchievementsComponent
+      },
+      {
+        path: 'dojo',
+        component: DojoComponent
       },
       {
         path: '',
