@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Application } from 'pixi.js';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,6 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'labrute-angular';
+
+  game = new Application();
 }
