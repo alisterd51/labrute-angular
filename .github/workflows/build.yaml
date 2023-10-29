@@ -1,0 +1,89 @@
+name: Build
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+  merge_group:
+
+permissions:
+  contents: read
+
+env:
+  NODE_VERSION: 18
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+
+  lint-eslint:
+    needs: [setup]
+    runs-on: ubuntu-latest
+    permissions:
+      actions: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+      - name: Use Node.js ${{ env.NODE_VERSION }}
+        uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: 'npm'
+      - name: Clean install
+        run: npm ci
+      - name: Lint
+        run: npm run lint
+
+  lint-dockerfile:
+    needs: [setup]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+      - uses: hadolint/hadolint-action@54c9adbab1582c2ef04b2016b760714a4bfde3cf # v3.1.0
+        with:
+          dockerfile: Dockerfile
+
+  test:
+    needs: [setup]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [16, 18]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: 'npm'
+      - name: Clean install
+        run: npm ci
+      - name: Test
+        run: npm run test
+
+  test-e2e:
+    needs: [setup]
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node: [16, 18]
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+      - name: Use Node.js ${{ matrix.node }}
+        uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4
+        with:
+          node-version: ${{ matrix.node }}
+          cache: 'npm'
+      - name: Clean install
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: Test e2e
+        run: npm run e2e

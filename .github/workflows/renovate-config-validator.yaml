@@ -1,0 +1,22 @@
+name: Renovate config validator
+
+on:
+  pull_request:
+    paths:
+      - 'renovate.json'
+
+jobs:
+  lint-renovate-config:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+      - name: Use Node.js 21
+        uses: actions/setup-node@8f152de45cc393bb48ce5d89d36b731f54556e65 # v4
+        with:
+          node-version: 21
+          cache: 'npm'
+      - name: Install renovate
+        run: npm i renovate
+      - name: run renovate-config-validator
+        run: ./node_modules/renovate/dist/config-validator.js --strict
