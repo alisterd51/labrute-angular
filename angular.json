@@ -67,10 +67,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "labrute-angular:build:production"
+              "buildTarget": "labrute-angular:build:production"
             },
             "development": {
-              "browserTarget": "labrute-angular:build:development"
+              "buildTarget": "labrute-angular:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -78,7 +78,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "labrute-angular:build"
+            "buildTarget": "labrute-angular:build"
           }
         },
         "test": {
