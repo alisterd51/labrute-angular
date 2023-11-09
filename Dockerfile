@@ -1,11 +1,11 @@
-FROM node:20.9.0-alpine AS development
+FROM node:20.9.0-alpine@sha256:8e015de364a2eb2ed7c52a558e9f716dcb615560ffd132234087c10ccc1f2c63 AS development
 WORKDIR /usr/src/app
 COPY --chown=node:node package*.json ./
 RUN npm ci
 COPY --chown=node:node . .
 USER node
 
-FROM node:20.9.0-alpine AS build
+FROM node:20.9.0-alpine@sha256:8e015de364a2eb2ed7c52a558e9f716dcb615560ffd132234087c10ccc1f2c63 AS build
 WORKDIR /usr/src/app
 COPY --chown=node:node package*.json ./
 COPY --chown=node:node --from=development /usr/src/app/node_modules ./node_modules
