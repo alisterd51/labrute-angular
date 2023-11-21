@@ -38,7 +38,7 @@
     "@angular/cli": "17.0.1",
     "@angular/compiler-cli": "17.0.3",
     "@cypress/schematic": "2.5.1",
-    "@types/css-font-loading-module": "0.0.11",
+    "@types/css-font-loading-module": "0.0.12",
     "@types/jasmine": "5.1.2",
     "@types/node": "20.9.2",
     "@typescript-eslint/eslint-plugin": "6.11.0",
