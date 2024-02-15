@@ -14,5 +14,5 @@ ARG BACKEND_HOST
 RUN npm run build --omit=dev
 USER node
 
-FROM nginxinc/nginx-unprivileged:1.25.3-alpine-slim@sha256:1732fb26b6098b17b6cd81e099fe886a19b9e82d59a0773ef69bda785aa26173 AS production
+FROM nginxinc/nginx-unprivileged:1.25.4-alpine-slim@sha256:a936824219948a1c880e6b44fe059c49ce6117e2fa6a05561ce324278904fcb2 AS production
 COPY --from=build /usr/src/app/dist/labrute-angular /usr/share/nginx/html
