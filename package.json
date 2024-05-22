@@ -29,13 +29,13 @@
     "zone.js": "~0.14.2"
   },
   "devDependencies": {
-    "@angular-devkit/build-angular": "17.3.7",
+    "@angular-devkit/build-angular": "17.3.8",
     "@angular-eslint/builder": "17.5.0",
     "@angular-eslint/eslint-plugin": "17.5.0",
     "@angular-eslint/eslint-plugin-template": "17.5.0",
     "@angular-eslint/schematics": "17.5.0",
     "@angular-eslint/template-parser": "17.5.0",
-    "@angular/cli": "17.3.7",
+    "@angular/cli": "17.3.8",
     "@angular/compiler-cli": "17.3.9",
     "@cypress/schematic": "2.5.1",
     "@types/css-font-loading-module": "0.0.13",
